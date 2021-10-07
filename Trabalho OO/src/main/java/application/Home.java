@@ -30,7 +30,9 @@ private static RegistroDeVendas registroVendas = new RegistroDeVendas();
   private static FormCalcado formCalcado = new FormCalcado();
   private static FormCliente formCliente = new FormCliente();
   private static FormVendedor formVendedor = new FormVendedor();
-  private static FormEstoque formEstoque = new FormEstoque();
+  private static Relatorio relatorio = new Relatorio();
+  private static Buscas busca = new Buscas();
+ 
   private static FormVenda formVenda = new FormVenda();
   
   
@@ -47,9 +49,9 @@ private static RegistroDeVendas registroVendas = new RegistroDeVendas();
         jButtonCalcados = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jButtonClientes = new javax.swing.JButton();
-        jButtonRelatorio = new javax.swing.JButton();
+        jButtonGerarRelatorio = new javax.swing.JButton();
         jButtonVendedores = new javax.swing.JButton();
-        adicionarAoEstoque = new javax.swing.JButton();
+        buscas = new javax.swing.JButton();
         jButtonRegistrarVenda = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -154,14 +156,14 @@ private static RegistroDeVendas registroVendas = new RegistroDeVendas();
             }
         });
 
-        jButtonRelatorio.setBackground(new java.awt.Color(255, 153, 0));
-        jButtonRelatorio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButtonRelatorio.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonRelatorio.setText("Gerar relatório");
-        jButtonRelatorio.setBorder(null);
-        jButtonRelatorio.addActionListener(new java.awt.event.ActionListener() {
+        jButtonGerarRelatorio.setBackground(new java.awt.Color(255, 153, 0));
+        jButtonGerarRelatorio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonGerarRelatorio.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonGerarRelatorio.setText("Gerar relatório");
+        jButtonGerarRelatorio.setBorder(null);
+        jButtonGerarRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRelatorioActionPerformed(evt);
+                jButtonGerarRelatorioActionPerformed(evt);
             }
         });
 
@@ -176,14 +178,14 @@ private static RegistroDeVendas registroVendas = new RegistroDeVendas();
             }
         });
 
-        adicionarAoEstoque.setBackground(new java.awt.Color(0, 153, 255));
-        adicionarAoEstoque.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        adicionarAoEstoque.setForeground(new java.awt.Color(255, 255, 255));
-        adicionarAoEstoque.setText("Adicionar ao Estoque");
-        adicionarAoEstoque.setBorder(null);
-        adicionarAoEstoque.addActionListener(new java.awt.event.ActionListener() {
+        buscas.setBackground(new java.awt.Color(0, 153, 255));
+        buscas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        buscas.setForeground(new java.awt.Color(255, 255, 255));
+        buscas.setText("Buscas");
+        buscas.setBorder(null);
+        buscas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adicionarAoEstoqueActionPerformed(evt);
+                buscasActionPerformed(evt);
             }
         });
 
@@ -228,8 +230,8 @@ private static RegistroDeVendas registroVendas = new RegistroDeVendas();
                         .addGap(38, 38, 38)))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonRegistrarVenda, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                    .addComponent(adicionarAoEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(buscas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonGerarRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(23, 23, 23))
         );
         jPanel4Layout.setVerticalGroup(
@@ -241,11 +243,11 @@ private static RegistroDeVendas registroVendas = new RegistroDeVendas();
                 .addGap(28, 28, 28)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(adicionarAoEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buscas, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(jButtonRegistrarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonGerarRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(124, 124, 124))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,21 +288,26 @@ private static RegistroDeVendas registroVendas = new RegistroDeVendas();
 
     }//GEN-LAST:event_jButtonClientesActionPerformed
 
-    private void jButtonRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRelatorioActionPerformed
-        
-    }//GEN-LAST:event_jButtonRelatorioActionPerformed
+    private void jButtonGerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGerarRelatorioActionPerformed
+        if(formVenda.devolveRegistroDeVendas()!=null){
+             relatorio.setRegistroDeVendas(formVenda.devolveRegistroDeVendas());
+        }
+        relatorio.setVisible(true);
+       
+    }//GEN-LAST:event_jButtonGerarRelatorioActionPerformed
 
     private void jButtonVendedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVendedoresActionPerformed
         formVendedor.setLocationRelativeTo(this);
         formVendedor.setVisible(true);
     }//GEN-LAST:event_jButtonVendedoresActionPerformed
 
-    private void adicionarAoEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarAoEstoqueActionPerformed
-       formEstoque.setCalcados(formCalcado.devolverEstoque());
-       formEstoque.setLocationRelativeTo(this);
-       formEstoque.setVisible(true);
+    private void buscasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscasActionPerformed
+     if(formVenda.devolveRegistroDeVendas()!=null){
+             busca.setRegistroDeVendas(formVenda.devolveRegistroDeVendas());
+        }
+        busca.setVisible(true);
         
-    }//GEN-LAST:event_adicionarAoEstoqueActionPerformed
+    }//GEN-LAST:event_buscasActionPerformed
 
     private void jButtonRegistrarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarVendaActionPerformed
        
@@ -355,11 +362,11 @@ private static RegistroDeVendas registroVendas = new RegistroDeVendas();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton adicionarAoEstoque;
+    private javax.swing.JButton buscas;
     private javax.swing.JButton jButtonCalcados;
     private javax.swing.JButton jButtonClientes;
+    private javax.swing.JButton jButtonGerarRelatorio;
     private javax.swing.JButton jButtonRegistrarVenda;
-    private javax.swing.JButton jButtonRelatorio;
     private javax.swing.JButton jButtonVendedores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;

@@ -5,6 +5,7 @@
  */
 package models;
 
+import exceptions.EstoqueEsgostadoException;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -17,7 +18,8 @@ public class Venda {
     private  Vendedor vendedor;
     private  Cliente cliente;
     private  Calcado calcado;
-    private int quantidade;
+    private int quantidadeVendida;
+    private double valor;
 
     public Venda() {
     }
@@ -27,7 +29,7 @@ public class Venda {
         this.vendedor = vendedor;
         this.cliente = cliente;
         this.calcado = calcado;
-        this.quantidade = quantidade;
+        this.quantidadeVendida = quantidade;
     }
 
     
@@ -63,12 +65,21 @@ public class Venda {
         this.calcado = calcado;
     }
     
-    public int getQuantidade() {
-        return quantidade;
+    public int getQuantidadeVendida() {
+        return quantidadeVendida;
     }
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
+    public void setQuantidadeVendida(int quantidadeVendida,int quantidadeEstoque) throws EstoqueEsgostadoException {
+        if(quantidadeVendida>quantidadeEstoque){
+           throw new EstoqueEsgostadoException();
+        }
+      
+        this.quantidadeVendida = quantidadeVendida;
+        this.valor= this.quantidadeVendida * this.getCalcado().getPreco();
+    }
+
+    public double getValor() {
+        return valor;
     }
 
     @Override
@@ -78,7 +89,7 @@ public class Venda {
         hash = 53 * hash + Objects.hashCode(this.vendedor);
         hash = 53 * hash + Objects.hashCode(this.cliente);
         hash = 53 * hash + Objects.hashCode(this.calcado);
-        hash = 53 * hash + this.quantidade;
+        hash = 53 * hash + this.quantidadeVendida;
         return hash;
     }
 
@@ -94,7 +105,7 @@ public class Venda {
             return false;
         }
         final Venda other = (Venda) obj;
-        if (this.quantidade != other.quantidade) {
+        if (this.quantidadeVendida != other.quantidadeVendida) {
             return false;
         }
         if (!Objects.equals(this.dataHora, other.dataHora)) {
@@ -110,6 +121,24 @@ public class Venda {
             return false;
         }
         return true;
+    }
+    
+    public String getDataeHoraFormatada(){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(this.dataHora.getDayOfMonth()).append("/").
+                append(this.dataHora.getMonthValue()).
+                append("/").
+                append(this.dataHora.getYear()).
+                append("   ").append(this.dataHora.getHour()).append(":").
+                append(this.dataHora.getMinute());
+        
+        return stringBuilder.toString();
+        
+    }
+
+    @Override
+    public String toString() {
+        return "Venda{" + "dataHora=" + dataHora + ", vendedor=" + vendedor + ", cliente=" + cliente + ", calcado=" + calcado + ", quantidadeVendida=" + quantidadeVendida + ", valor=" + valor + '}';
     }
 
     

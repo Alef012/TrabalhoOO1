@@ -79,7 +79,7 @@ public class Vendedor extends Pessoa{
     @Override
     public String toString() {
         return 
-                "Vendedor{" + "numeroDeVendas=" + numeroDeVendas + ", codigoVendedor=" + codigoVendedor + '}'+"Nome: " + this.getNome()+"\n"
+                "Vendedor\n" +  "CodigoVendedor=" + codigoVendedor +"\nNome: " + this.getNome()+"\n"
                 + "CPF: "+ this.getCpf()+"\n"
                 + "RG: "+ this.getRg()+"\n";
     }

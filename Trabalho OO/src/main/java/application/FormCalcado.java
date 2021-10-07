@@ -2,6 +2,7 @@
 package application;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import models.Calcado;
 import repositorios.Estoque;
@@ -48,6 +49,9 @@ public class FormCalcado extends javax.swing.JFrame {
         jButtonExcluirCalcado = new javax.swing.JButton();
         jButtonEditarCalcado = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jLabelQuantidadeCalcado = new javax.swing.JLabel();
+        jTextFieldQuantidadeCalcado = new javax.swing.JTextField();
+        jButtonRefreshCalcado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -256,6 +260,21 @@ public class FormCalcado extends javax.swing.JFrame {
             .addGap(0, 55, Short.MAX_VALUE)
         );
 
+        jLabelQuantidadeCalcado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelQuantidadeCalcado.setText("Quantidade:");
+
+        jButtonRefreshCalcado.setBackground(new java.awt.Color(0, 153, 255));
+        jButtonRefreshCalcado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonRefreshCalcado.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonRefreshCalcado.setText("Refresh");
+        jButtonRefreshCalcado.setBorder(null);
+        jButtonRefreshCalcado.setBorderPainted(false);
+        jButtonRefreshCalcado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRefreshCalcadoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -263,57 +282,64 @@ public class FormCalcado extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelModeloCalcado)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonRefreshCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabelCategoriaCalcado)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextFieldCategoriaCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabelTamanhoCalcado)
-                                .addGap(20, 20, 20)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldTamanhoCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldModeloCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButtonCancelarCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButtonSalvarCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButtonSalvarCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(91, 91, 91))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
+                                .addGap(28, 28, 28)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelModeloCalcado)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabelCorCalcado)
-                                            .addComponent(jLabelPrecoCalcado))
-                                        .addGap(81, 81, 81)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabelCategoriaCalcado)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jTextFieldCategoriaCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabelTamanhoCalcado)
+                                                .addGap(20, 20, 20)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jTextFieldTamanhoCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jTextFieldModeloCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextFieldCorCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextFieldPrecoCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabelCodigoCalcado)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextFieldCodigoDoProdutoCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonNovoCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52)
-                        .addComponent(jButtonEditarCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonExcluirCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabelCorCalcado)
+                                                    .addComponent(jLabelPrecoCalcado))
+                                                .addGap(81, 81, 81)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jTextFieldCorCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jTextFieldPrecoCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabelCodigoCalcado)
+                                                    .addComponent(jLabelQuantidadeCalcado))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jTextFieldQuantidadeCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jTextFieldCodigoDoProdutoCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButtonNovoCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(52, 52, 52)
+                                .addComponent(jButtonEditarCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonExcluirCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(75, 75, 75))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -322,7 +348,9 @@ public class FormCalcado extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addComponent(jButtonLimparCampos)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonLimparCampos)
+                            .addComponent(jButtonRefreshCalcado))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelCategoriaCalcado)
@@ -342,10 +370,14 @@ public class FormCalcado extends javax.swing.JFrame {
                                 .addComponent(jTextFieldModeloCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabelCodigoCalcado)
                                 .addComponent(jTextFieldCodigoDoProdutoCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(26, 26, 26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonSalvarCalcado)
-                            .addComponent(jButtonCancelarCalcado))
+                            .addComponent(jTextFieldQuantidadeCalcado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelQuantidadeCalcado))
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonCancelarCalcado)
+                            .addComponent(jButtonSalvarCalcado))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
@@ -391,6 +423,7 @@ public class FormCalcado extends javax.swing.JFrame {
             jTextFieldModeloCalcado.setText(calcado.getModelo());
             jTextFieldPrecoCalcado.setText(String.valueOf(calcado.getPreco()));    
             jTextFieldTamanhoCalcado.setText(String.valueOf(calcado.getTamanho()));
+            jTextFieldQuantidadeCalcado.setText(String.valueOf(calcado.getQuantidade()));
            
     }
       this.excluir();  
@@ -412,7 +445,7 @@ public class FormCalcado extends javax.swing.JFrame {
     }
     public void CarregaTabela() {
 
-        DefaultTableModel modelo = new DefaultTableModel(new Object[]{"Categoria", "Tamanho", "Modelo", "Peço", "Cor", "Código"}, 0);
+        DefaultTableModel modelo = new DefaultTableModel(new Object[]{"Categoria", "Tamanho", "Modelo", "Peço", "Cor", "Código","Quantidade"}, 0);
 
         for (int i = 0; i < calcados.tamanho(); i++) {
             Object linha[] = new Object[]{
@@ -421,7 +454,8 @@ public class FormCalcado extends javax.swing.JFrame {
                 calcados.obter(i).getModelo(),
                 calcados.obter(i).getPreco(),
                 calcados.obter(i).getCor(),
-                calcados.obter(i).getCodigoDoProduto()};
+                calcados.obter(i).getCodigoDoProduto(),
+                calcados.obter(i).getQuantidade()};
         modelo.addRow(linha);
 
     }
@@ -441,6 +475,13 @@ public class FormCalcado extends javax.swing.JFrame {
     jTableCalcados.getColumnModel ()
 
     .getColumn(4);
+    
+     jTableCalcados.getColumnModel ()
+
+    .getColumn(5);
+    
+    
+    
     jTableCalcados.setModel (modelo);
 
 }
@@ -451,7 +492,8 @@ public class FormCalcado extends javax.swing.JFrame {
         this.jTextFieldCorCalcado.setVisible(false);
         this.jTextFieldPrecoCalcado.setVisible(false);
         this.jTextFieldCodigoDoProdutoCalcado.setVisible(false);
-        this.jTextFieldTamanhoCalcado.setVisible(false);        
+        this.jTextFieldTamanhoCalcado.setVisible(false);  
+        this.jTextFieldQuantidadeCalcado.setVisible(false);
         this.jButtonSalvarCalcado.setVisible(false);
         this.jButtonCancelarCalcado.setVisible(false);
         this.jButtonLimparCampos.setVisible(false);
@@ -461,6 +503,7 @@ public class FormCalcado extends javax.swing.JFrame {
         this.jLabelModeloCalcado.setVisible(false);
         this.jLabelPrecoCalcado.setVisible(false);
         this.jLabelTamanhoCalcado.setVisible(false);
+        this.jLabelQuantidadeCalcado.setVisible(false);
     }
     
     public void habilitarFormulario(){
@@ -469,7 +512,8 @@ public class FormCalcado extends javax.swing.JFrame {
         this.jTextFieldCorCalcado.setVisible(true);
         this.jTextFieldPrecoCalcado.setVisible(true);
         this.jTextFieldCodigoDoProdutoCalcado.setVisible(true);
-        this.jTextFieldTamanhoCalcado.setVisible(true);        
+        this.jTextFieldTamanhoCalcado.setVisible(true);
+        this.jTextFieldQuantidadeCalcado.setVisible(true);
         this.jButtonSalvarCalcado.setVisible(true);
         this.jButtonCancelarCalcado.setVisible(true);
         this.jButtonLimparCampos.setVisible(true);
@@ -479,6 +523,8 @@ public class FormCalcado extends javax.swing.JFrame {
         this.jLabelModeloCalcado.setVisible(true);
         this.jLabelPrecoCalcado.setVisible(true);
         this.jLabelTamanhoCalcado.setVisible(true);
+        this.jLabelQuantidadeCalcado.setVisible(true);
+        
     }
     private void jButtonNovoCalcadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoCalcadoActionPerformed
          this.novo();
@@ -493,6 +539,7 @@ public class FormCalcado extends javax.swing.JFrame {
         jTextFieldModeloCalcado.setText("");
         jTextFieldPrecoCalcado.setText("");
         jTextFieldTamanhoCalcado.setText("");
+        jTextFieldQuantidadeCalcado.setText("");
     }
     private void jButtonLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparCamposActionPerformed
         this.limparCampos();
@@ -517,7 +564,13 @@ public class FormCalcado extends javax.swing.JFrame {
         this.desabilitarFormulario();
     }
     private void jButtonSalvarCalcadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarCalcadoActionPerformed
-        this.salvar();
+        try{
+             this.salvar();
+        }
+        catch(NumberFormatException numberFormatException){
+             JOptionPane.showMessageDialog(null,"Input com formato inválido","ALEF SHOES", JOptionPane.WARNING_MESSAGE);
+        }
+       
     }//GEN-LAST:event_jButtonSalvarCalcadoActionPerformed
     private void salvar(){
         Calcado calcado = new Calcado();
@@ -527,6 +580,7 @@ public class FormCalcado extends javax.swing.JFrame {
         calcado.setPreco(Double.parseDouble(jTextFieldPrecoCalcado.getText()));
         calcado.setCor(jTextFieldCorCalcado.getText());
         calcado.setCodigoDoProduto(jTextFieldCodigoDoProdutoCalcado.getText());
+        calcado.setQuantidade(Integer.parseInt(jTextFieldQuantidadeCalcado.getText()));
         calcados.cadastrar(calcado);
         this.desabilitarFormulario();
         this.CarregaTabela();
@@ -549,6 +603,13 @@ public class FormCalcado extends javax.swing.JFrame {
         this.indice = jTableCalcados.getSelectedRow();
         
     }//GEN-LAST:event_jTableCalcadosMouseClicked
+
+    private void refresh(){
+        this.CarregaTabela();
+    }
+    private void jButtonRefreshCalcadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshCalcadoActionPerformed
+      this.refresh();
+    }//GEN-LAST:event_jButtonRefreshCalcadoActionPerformed
     
     private void cadastrar(){
         Calcado a = new Calcado();
@@ -558,6 +619,7 @@ public class FormCalcado extends javax.swing.JFrame {
         a.setPreco(200.50);
         a.setCor("Salmão");
         a.setCodigoDoProduto("1");
+        a.setQuantidade(5);
         calcados.cadastrar(a);
         Calcado b = new Calcado();
         b.setCategoria("social");
@@ -566,6 +628,7 @@ public class FormCalcado extends javax.swing.JFrame {
         b.setPreco(200.50);
         b.setCor("Creme");
         b.setCodigoDoProduto("2");
+        b.setQuantidade(5);
         calcados.cadastrar(b);
         Calcado c = new Calcado();
         c.setCategoria("casual");
@@ -574,6 +637,7 @@ public class FormCalcado extends javax.swing.JFrame {
         c.setPreco(200.50);
         c.setCor("Branco couro");
         c.setCodigoDoProduto("3");
+        c.setQuantidade(5);
         calcados.cadastrar(c);
     }
     public static void main(String args[]) {
@@ -629,6 +693,7 @@ catch (javax.swing.UnsupportedLookAndFeelException ex) {
     private javax.swing.JButton jButtonExcluirCalcado;
     private javax.swing.JButton jButtonLimparCampos;
     private javax.swing.JButton jButtonNovoCalcado;
+    private javax.swing.JButton jButtonRefreshCalcado;
     private javax.swing.JButton jButtonSairCalcado;
     private javax.swing.JButton jButtonSalvarCalcado;
     private javax.swing.JLabel jLabel5;
@@ -637,6 +702,7 @@ catch (javax.swing.UnsupportedLookAndFeelException ex) {
     private javax.swing.JLabel jLabelCorCalcado;
     private javax.swing.JLabel jLabelModeloCalcado;
     private javax.swing.JLabel jLabelPrecoCalcado;
+    private javax.swing.JLabel jLabelQuantidadeCalcado;
     private javax.swing.JLabel jLabelTamanhoCalcado;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -648,6 +714,7 @@ catch (javax.swing.UnsupportedLookAndFeelException ex) {
     private javax.swing.JTextField jTextFieldCorCalcado;
     private javax.swing.JTextField jTextFieldModeloCalcado;
     private javax.swing.JTextField jTextFieldPrecoCalcado;
+    private javax.swing.JTextField jTextFieldQuantidadeCalcado;
     private javax.swing.JTextField jTextFieldTamanhoCalcado;
     // End of variables declaration//GEN-END:variables
 }

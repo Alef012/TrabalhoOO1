@@ -159,8 +159,8 @@
                   </Group>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jButtonRegistrarVenda" pref="125" max="32767" attributes="0"/>
-                      <Component id="adicionarAoEstoque" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jButtonRelatorio" alignment="0" max="32767" attributes="0"/>
+                      <Component id="buscas" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jButtonGerarRelatorio" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
@@ -175,11 +175,11 @@
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="adicionarAoEstoque" min="-2" pref="44" max="-2" attributes="0"/>
+                          <Component id="buscas" min="-2" pref="44" max="-2" attributes="0"/>
                           <EmptySpace pref="18" max="32767" attributes="0"/>
                           <Component id="jButtonRegistrarVenda" min="-2" pref="44" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButtonRelatorio" min="-2" pref="44" max="-2" attributes="0"/>
+                          <Component id="jButtonGerarRelatorio" min="-2" pref="44" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -282,7 +282,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonClientesActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButtonRelatorio">
+        <Component class="javax.swing.JButton" name="jButtonGerarRelatorio">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="99" red="ff" type="rgb"/>
@@ -299,7 +299,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRelatorioActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGerarRelatorioActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonVendedores">
@@ -322,7 +322,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonVendedoresActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="adicionarAoEstoque">
+        <Component class="javax.swing.JButton" name="buscas">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -333,13 +333,13 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Adicionar ao Estoque"/>
+            <Property name="text" type="java.lang.String" value="Buscas"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adicionarAoEstoqueActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscasActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonRegistrarVenda">

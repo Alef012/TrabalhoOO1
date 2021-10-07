@@ -161,6 +161,12 @@ public class RegistroDeVendas implements CRUD<Venda>{
     public Cliente retornaCliente(int indice){
         return this.clientes.get(indice);
     }
+
+    @Override
+    public String toString() {
+        return "RegistroDeVendas{" + "vendas=" + vendas + ", clientes=" + clientes + ", vendedores=" + vendedores + ", calcados=" + calcados + '}';
+    }
+    
     
     
 }

@@ -5,12 +5,20 @@
  */
 package application;
 
+import exceptions.EstoqueEsgostadoException;
+import exceptions.InputErradoException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.DoubleSummaryStatistics;
+import java.util.IntSummaryStatistics;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import models.*;
 import repositorios.RegistroDeVendas;
+import utils.ChaveValor;
 
 /**
  *
@@ -25,6 +33,8 @@ public class FormVenda extends javax.swing.JFrame {
     private static RegistroDeVendas vendas;
     private static int indice=0;
     private static int contador;
+    private static boolean editando=false;
+    
     public FormVenda() {
         vendas = new RegistroDeVendas();
         initComponents();
@@ -40,11 +50,8 @@ public class FormVenda extends javax.swing.JFrame {
     public void setVendas(RegistroDeVendas vendas) {
         FormVenda.vendas = vendas;
     }
-
+    
    
-    
-    
-
     
     
      public void CarregaTabela() {
@@ -57,9 +64,9 @@ public class FormVenda extends javax.swing.JFrame {
                 vendas.obter(i).getVendedor().getNome(),
                 vendas.obter(i).getCliente().getNome(),
                 vendas.obter(i).getCalcado().getModelo(),
-                vendas.obter(i).getCalcado().getQuantidade(),
-                (vendas.obter(i).getCalcado().getPreco())*(vendas.obter(i).getQuantidade()),
-                vendas.obter(i).getDataHora()
+                vendas.obter(i).getQuantidadeVendida(),
+                (vendas.obter(i).getCalcado().getPreco())*(vendas.obter(i).getQuantidadeVendida()),
+                vendas.obter(i).getDataeHoraFormatada()
                 
             
             };
@@ -330,21 +337,24 @@ public class FormVenda extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(jTextFieldVendendorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelVendedorVenda)
-                            .addComponent(jLabelCalcadoVenda))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextFieldCalcadoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(150, 150, 150)
+                                .addComponent(jTextFieldVendendorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButtonLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelVendedorVenda)
+                                    .addComponent(jLabelCalcadoVenda))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextFieldCalcadoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonRefreshVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(318, 318, 318)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,10 +376,7 @@ public class FormVenda extends javax.swing.JFrame {
                                 .addComponent(jButtonEditarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(67, 67, 67)
                                 .addComponent(jButtonExcluirVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonRefreshVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(76, 76, 76))
         );
         jPanel1Layout.setVerticalGroup(
@@ -378,7 +385,7 @@ public class FormVenda extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                         .addComponent(jButtonRefreshVenda)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -407,7 +414,7 @@ public class FormVenda extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonSalvarVenda)
                             .addComponent(jButtonCancelarVenda))
-                        .addGap(111, 209, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -434,7 +441,11 @@ public class FormVenda extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCalcadoVendaActionPerformed
 
     private void jButtonSalvarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarVendaActionPerformed
-        this.salvar();
+         try{
+             this.salvar();
+         }catch(NumberFormatException inputErradoException){
+             JOptionPane.showMessageDialog(null,"Input com formato inválido","ALEF SHOES", JOptionPane.WARNING_MESSAGE);
+         }
     }//GEN-LAST:event_jButtonSalvarVendaActionPerformed
 
     private void jButtonCancelarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarVendaActionPerformed
@@ -458,6 +469,7 @@ public class FormVenda extends javax.swing.JFrame {
      this.indice = jTableVendas.getSelectedRow();
     }//GEN-LAST:event_jTableVendasMouseClicked
 private void salvar(){
+    
         Venda venda = new Venda();  
         
         Vendedor vendedor = retornaVendedorPorCPF(jTextFieldVendendorVenda.getText());
@@ -471,12 +483,22 @@ private void salvar(){
         
       
         venda.setDataHora(LocalDateTime.now());
-        
-        venda.setQuantidade(Integer.parseInt(jTextFieldQuantidadeVenda.getText()));
+        try{
+        venda.setQuantidadeVendida(Integer.parseInt(jTextFieldQuantidadeVenda.getText()),calcado.getQuantidade());
+        calcado.setQuantidade(calcado.getQuantidade()-venda.getQuantidadeVendida());
         vendas.cadastrar(venda);
         this.CarregaTabela();
-         this.desabilitarFormulario();
+        this.desabilitarFormulario();
         this.limparCampos();
+        } catch (EstoqueEsgostadoException ex) {
+            Logger.getLogger(FormVenda.class.getName()).log(Level.SEVERE, null, ex);
+             JOptionPane.showMessageDialog(null,"Estoque insuficiente","ALEF SHOES", JOptionPane.WARNING_MESSAGE);
+        }
+        catch(NumberFormatException inputErradoException){
+            JOptionPane.showMessageDialog(null,"Input com formata inválido","ALEF SHOES", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        
     }  
     private void jButtonNovoVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoVendaActionPerformed
         this.habilitarFormulario();
@@ -497,22 +519,33 @@ private void salvar(){
     }//GEN-LAST:event_jButtonExcluirVendaActionPerformed
    private void editar(){
          this.habilitarFormulario();
-      if (indice>=0 && indice<vendas.tamanho())
+        
+     try{
+         if (indice>=0 && indice<vendas.tamanho())
         {
             Venda venda = vendas.obter(indice);
             jTextFieldVendendorVenda.setText(venda.getVendedor().getCpf());
             jTextFieldClienteVenda.setText(venda.getCliente().getCpf());
-            jTextFieldQuantidadeVenda.setText(String.valueOf(venda.getQuantidade()));
+            jTextFieldQuantidadeVenda.setText(String.valueOf(venda.getQuantidadeVendida()));
             jTextFieldCalcadoVenda.setText(venda.getCalcado().getCodigoDoProduto());
-                     
+             this.excluir();       
     }
-      this.excluir();  
+      
+     }
+     catch(NumberFormatException numberFormatException){
+         JOptionPane.showMessageDialog(null,"Input com formata inválido","ALEF SHOES", JOptionPane.WARNING_MESSAGE); 
+     }
+      
 
    }
     private void jButtonEditarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarVendaActionPerformed
-         this.editar();
+        
+             this.editar();
+         
+        
+       
     }//GEN-LAST:event_jButtonEditarVendaActionPerformed
-    private void refresh(){
+    private void refresh() throws EstoqueEsgostadoException{
         if(contador==0){
            this.cadastrar();  
            contador++;
@@ -521,8 +554,13 @@ private void salvar(){
         this.CarregaTabela();
     }
     private void jButtonRefreshVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshVendaActionPerformed
-        this.refresh();
+        try {
+            this.refresh();
+        } catch (EstoqueEsgostadoException ex) {
+            Logger.getLogger(FormVenda.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonRefreshVendaActionPerformed
+
 
     
     private Cliente retornaClientePorCPF(String cpf){
@@ -602,28 +640,39 @@ private void salvar(){
     /**
      * @param args the command line arguments
      */
-    public void cadastrar(){
+    public void cadastrar() throws EstoqueEsgostadoException{
+        try{
         Venda a = new Venda();
         a.setVendedor(this.retornaVendedorPorCPF("4"));
         a.setCalcado(this.retornaCalcadoPorCodigo("3"));
         a.setCliente(this.retornaClientePorCPF("1"));
         a.setDataHora(LocalDateTime.now());
-        a.setQuantidade(1);
+        int quantidadeA =a.getCalcado().getQuantidade();
+        a.setQuantidadeVendida(1,quantidadeA);
         vendas.cadastrar(a);
         Venda b = new Venda();
         b.setVendedor(this.retornaVendedorPorCPF("5"));
         b.setCalcado(this.retornaCalcadoPorCodigo("2"));
         b.setCliente(this.retornaClientePorCPF("2"));
         b.setDataHora(LocalDateTime.now());
-        b.setQuantidade(1);
+        int quantidadeB =b.getCalcado().getQuantidade();
+        b.setQuantidadeVendida(1,quantidadeB);
         vendas.cadastrar(b);
         Venda c = new Venda();
         c.setVendedor(this.retornaVendedorPorCPF("6"));
         c.setCalcado(this.retornaCalcadoPorCodigo("1"));
         c.setCliente(this.retornaClientePorCPF("3"));
         c.setDataHora(LocalDateTime.now());
-        c.setQuantidade(1);
+        int quantidadeC =c.getCalcado().getQuantidade();
+        c.setQuantidadeVendida(1,quantidadeC);
         vendas.cadastrar(c);
+        }
+        catch(EstoqueEsgostadoException estoqueEsgostadoException){
+            JOptionPane.showMessageDialog(null,"Estoque insuficiente","ALEF SHOES", JOptionPane.WARNING_MESSAGE);
+        }
+        catch(InputErradoException inputErradoException){
+            JOptionPane.showMessageDialog(null,"Input com formata inválido","ALEF SHOES", JOptionPane.WARNING_MESSAGE);
+        }
         
     }
     public static void main(String args[]) {
@@ -657,7 +706,14 @@ private void salvar(){
             }
         });
     }
-
+    public String modeloMaisVendido(){
+           IntSummaryStatistics sumario = vendas.getVendas().stream().collect(Collectors.summarizingInt(Venda :: getQuantidadeVendida));
+           int max = sumario.getMax();
+           return String.valueOf(max);
+    }
+    public RegistroDeVendas devolveRegistroDeVendas(){
+        return vendas; 
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelarVenda;
     private javax.swing.JButton jButtonEditarVenda;

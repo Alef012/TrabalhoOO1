@@ -2,6 +2,7 @@
 package application;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import models.Cliente;
 import models.Pessoa;
@@ -440,7 +441,12 @@ public class FormCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldRGClienteActionPerformed
 
     private void jButtonSalvarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarClienteActionPerformed
+       try{
         this.salvar();
+       }
+       catch(NumberFormatException numberFormatException){
+           JOptionPane.showMessageDialog(null,"Input com formato inválido","ALEF SHOES", JOptionPane.WARNING_MESSAGE);
+       }
     }//GEN-LAST:event_jButtonSalvarClienteActionPerformed
 
     private void jButtonCancelarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarClienteActionPerformed

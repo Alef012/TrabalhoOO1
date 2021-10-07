@@ -132,7 +132,15 @@ public class Calcado {
 
     @Override
     public String toString() {
-        return "Calcado{" + "categoria=" + categoria + ", tamanho=" + tamanho + ", modelo=" + modelo + ", preco=" + preco + ", cor=" + cor + ", codigoDoProduto=" + codigoDoProduto + ", quantidade=" + quantidade + '}';
+        return "Calcado" +
+                "\nCategoria: " + categoria + 
+                "\nTamanho: " + tamanho + 
+                "\nModelo: " + modelo + 
+                "\nPreço: " + preco + " R$"+
+                "\nCor: " + cor + 
+                "\nCodigoDoProduto: " + codigoDoProduto 
+                +"\nQuantidade: " + quantidade
+                ;
     }
     
     

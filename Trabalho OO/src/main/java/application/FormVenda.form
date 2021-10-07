@@ -46,25 +46,29 @@
               <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
               <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="jTextFieldVendendorVenda" min="-2" pref="121" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jButtonLimparCampos" min="-2" pref="116" max="-2" attributes="0"/>
-                              <Component id="jLabelVendedorVenda" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelCalcadoVenda" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldVendendorVenda" min="-2" pref="121" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jButtonLimparCampos" min="-2" pref="116" max="-2" attributes="0"/>
+                                      <Component id="jLabelVendedorVenda" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelCalcadoVenda" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jTextFieldCalcadoVenda" min="-2" pref="121" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jTextFieldCalcadoVenda" min="-2" pref="121" max="-2" attributes="0"/>
+                          <Component id="jButtonRefreshVenda" min="-2" pref="116" max="-2" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="318" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -95,10 +99,6 @@
                               <Component id="jScrollPane1" alignment="1" min="-2" pref="489" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jButtonRefreshVenda" min="-2" pref="116" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
                   <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
               </Group>
@@ -110,7 +110,7 @@
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="17" max="32767" attributes="0"/>
                           <Component id="jButtonRefreshVenda" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="276" max="-2" attributes="0"/>
@@ -144,7 +144,7 @@
                               <Component id="jButtonSalvarVenda" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonCancelarVenda" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="111" pref="209" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
