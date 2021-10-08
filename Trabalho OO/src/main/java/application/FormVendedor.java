@@ -149,6 +149,7 @@ public class FormVendedor extends javax.swing.JFrame {
                     vendedores.obter(i).getCpf(),
                     vendedores.obter(i).getRg(),
                     vendedores.obter(i).getDataNasc(),
+                    vendedores.obter(i).getCodigoVendedor()
             };
             modelo.addRow(linha);
 

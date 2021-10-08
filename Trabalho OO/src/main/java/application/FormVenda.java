@@ -571,7 +571,7 @@ public class FormVenda extends javax.swing.JFrame {
      * coloca os objetos pré cadastrados na tabela
      * @throws EstoqueEsgostadoException
      */
-    private void refresh() throws EstoqueEsgostadoException {
+    public void refresh() throws EstoqueEsgostadoException {
         if (contador == 0) {
             this.cadastrar();
             contador++;

@@ -8,6 +8,8 @@ package application;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
+import exceptions.EstoqueEsgostadoException;
 import models.Calcado;
 import models.Cliente;
 import models.Vendedor;
@@ -312,6 +314,7 @@ private static RegistroDeVendas registroVendas = new RegistroDeVendas();
      */
 
     private void jButtonGerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGerarRelatorioActionPerformed
+        this.atualizaBaseDeDados();
         if(formVenda.devolveRegistroDeVendas()!=null){
              relatorio.setRegistroDeVendas(formVenda.devolveRegistroDeVendas());
         }
@@ -333,7 +336,8 @@ private static RegistroDeVendas registroVendas = new RegistroDeVendas();
      * @param evt
      */
     private void buscasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscasActionPerformed
-     if(formVenda.devolveRegistroDeVendas()!=null){
+        this.atualizaBaseDeDados();
+        if(formVenda.devolveRegistroDeVendas()!=null){
              busca.setRegistroDeVendas(formVenda.devolveRegistroDeVendas());
         }
         busca.setVisible(true);
@@ -346,11 +350,11 @@ private static RegistroDeVendas registroVendas = new RegistroDeVendas();
      */
 
     private void jButtonRegistrarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarVendaActionPerformed
-       
-        registroVendas.setCalcados(formCalcado.devolverEstoque());
+        this.atualizaBaseDeDados();
+       /* registroVendas.setCalcados(formCalcado.devolverEstoque());
         registroVendas.setClientes(formCliente.devolverClientes());
         registroVendas.setVendedores(formVendedor.devolverVendedor());
-        formVenda.setVendas(registroVendas);
+        formVenda.setVendas(registroVendas);*/
         formVenda.setVisible(true);
        
         //formVenda.setVendas();
@@ -396,7 +400,18 @@ private static RegistroDeVendas registroVendas = new RegistroDeVendas();
             }
         });
     }
+private void atualizaBaseDeDados(){
+    registroVendas.setCalcados(formCalcado.devolverEstoque());
+    registroVendas.setClientes(formCliente.devolverClientes());
+    registroVendas.setVendedores(formVendedor.devolverVendedor());
+    formVenda.setVendas(registroVendas);
+    try {
+        formVenda.refresh();
+    } catch (EstoqueEsgostadoException estoqueEsgostadoException) {
+        JOptionPane.showMessageDialog(null, "Estoque insuficiente", "ALEF SHOES", JOptionPane.WARNING_MESSAGE);
+    }
 
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscas;
     private javax.swing.JButton jButtonCalcados;

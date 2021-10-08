@@ -366,7 +366,7 @@ public class Relatorio extends javax.swing.JFrame {
          StringBuilder stringBuilder = new StringBuilder();
          for(int i=0;i< registroDeVendas.getVendas().size();i++){
              if(registroDeVendas.getVendas().get(i).getValor()==alvo){ 
-                  stringBuilder.append(registroDeVendas.getVendas().get(i).getVendedor().getNome());
+                  stringBuilder.append(registroDeVendas.getVendas().get(i).getVendedor().getNome()).append(", ");
              }
          }
          
