@@ -5,10 +5,6 @@
  */
 package exceptions;
 
-/**
- *
- * @author USER
- */
 public class InputErradoException extends NumberFormatException {
     public InputErradoException() {
         super("Exception in thread: InputErradoException");

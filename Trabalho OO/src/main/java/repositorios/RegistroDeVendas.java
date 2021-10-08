@@ -14,7 +14,6 @@ import models.*;
  *
  * <p>
  * <b>Repositório de Vendas</b> </p>
- * <p></p>
  *
  * @author Felipe Alef
  * @since out 2021
@@ -38,6 +37,11 @@ public class RegistroDeVendas implements CRUD<Venda>{
         return true;
     }
 
+    /**
+     *
+     * @param venda
+     * @return
+     */
     @Override
     public boolean editar(Venda venda) {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -68,7 +72,7 @@ public class RegistroDeVendas implements CRUD<Venda>{
 
     /**
      * lista as Vendas registradas
-     * @return
+     * @return lista de vendas
      */
 
     @Override
@@ -78,7 +82,7 @@ public class RegistroDeVendas implements CRUD<Venda>{
 
     /**
      * Retorna o tamanho do arraylist de vendas
-     * @return
+     * @return tamanho
      */
     public int tamanho(){
         return vendas.size();
@@ -87,50 +91,81 @@ public class RegistroDeVendas implements CRUD<Venda>{
     /**
      * retorna a Venda selecionada
      * @param i
-     * @return
+     * @return 
      */
     
     public Venda obter(int i){
         return vendas.get(i);
     }
 
-
+    /**
+     *
+     * @return
+     */
     public ArrayList<Venda> getVendas() {
         return vendas;
     }
 
+    /**
+     *
+     * @param vendas
+     */
     public void setVendas(ArrayList<Venda> vendas) {
         this.vendas = vendas;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Cliente> getClientes() {
         return clientes;
     }
 
+    /**
+     *
+     * @param clientes
+     */
     public void setClientes(ArrayList<Cliente> clientes) {
         this.clientes = clientes;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Vendedor> getVendedores() {
         return vendedores;
     }
 
+    /**
+     *
+     * @param vendedores
+     */
     public void setVendedores(ArrayList<Vendedor> vendedores) {
         this.vendedores = vendedores;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Calcado> getCalcados() {
         return calcados;
     }
 
+    /**
+     *
+     * @param calcados
+     */
     public void setCalcados(ArrayList<Calcado> calcados) {
         this.calcados = calcados;
     }
 
     /**
      * Retorna nome do Cliente pelo cpf
-     * @param cpf
-     * @return
+     * @param cpf cpf do cliente
+     * @return 
      */
      public String retornaNomeDoClientePeloCpf(String cpf){
       for(Cliente cliente : clientes){
@@ -143,8 +178,8 @@ public class RegistroDeVendas implements CRUD<Venda>{
     }
     /**
      * Retorna nome do Vendedor pelo cpf
-     * @param cpf
-     * @return
+     * @param cpf do vendedor
+     * @return vendedor
      */
      
       public String retornaNomeDoVendendorPeloCpf(String cpf){
@@ -159,8 +194,8 @@ public class RegistroDeVendas implements CRUD<Venda>{
 
     /**
      * Retorna o modelo do calçado pelo código
-     * @param codigo
-     * @return
+     * @param codigo codigo do produto
+     * @return modelo do calçado
      */
      public String retornaNomeDoCalcadoPeloCodigo(String codigo){
       for(Calcado calcado : calcados){
@@ -174,8 +209,8 @@ public class RegistroDeVendas implements CRUD<Venda>{
 
     /**
      * retorna a posição do vendedor no repositório pelo cpf
-      * @param cpf
-     * @return
+      * @param cpf cpf do vendedor
+     * @return posição do vendedor
      */
      
     public Integer posicaoVendedor(String cpf){
@@ -189,8 +224,8 @@ public class RegistroDeVendas implements CRUD<Venda>{
 
     /**
      * Retorna a posição do cliente pelo cpf
-     * @param cpf
-     * @return
+     * @param cpf do vendedor
+     * @return posição cliente
      */
     
     public Integer posicaoCliente(String cpf){
@@ -204,8 +239,8 @@ public class RegistroDeVendas implements CRUD<Venda>{
 
     /**
      * Retorna a posição do calçado pelo codigo
-     * @param codigo
-     * @return
+     * @param codigo do calçado
+     * @return posição calçado
      */
     
     public Integer posicaoCalcado(String codigo){
@@ -221,8 +256,8 @@ public class RegistroDeVendas implements CRUD<Venda>{
 
     /**
      * recupera o vendedor pelo posição
-     * @param indice
-     * @return vendedor
+     * @param indice posição
+     * @return vendedor 
      */
     
     public Vendedor retornaVendedor(int indice){
@@ -231,7 +266,7 @@ public class RegistroDeVendas implements CRUD<Venda>{
 
     /**
      * recupera a o calçado pelo indice
-     * @param indice
+     * @param indice posição
      * @return calçado
      */
     
@@ -241,7 +276,7 @@ public class RegistroDeVendas implements CRUD<Venda>{
 
     /**
      * retorna cliente pelo indice
-     * @param indice
+     * @param indice posição
      * @return cliente
      */
     
@@ -251,7 +286,7 @@ public class RegistroDeVendas implements CRUD<Venda>{
 
     /**
      * toString da classe
-     * @return
+     * @return string
      */
     @Override
     public String toString() {

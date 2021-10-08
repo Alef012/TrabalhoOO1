@@ -34,8 +34,7 @@ public class Estoque implements CRUD<Calcado> {
     }
 
     /**
-     * Metodo pra adicionar um Calçado no repositório
-     * @param entidade
+     * Metodo pra adicionar um Calçado no repositório 
      * @return True se conseguiu cadastrar e False se não
      */
     @Override
@@ -50,7 +49,7 @@ public class Estoque implements CRUD<Calcado> {
 
     /**
      * remove um calçado do repositório
-     * @param entidade
+     * @param entidade calcado
      * @return True ou False
      */
     @Override
@@ -60,7 +59,7 @@ public class Estoque implements CRUD<Calcado> {
 
     /**
      * remove um calçado do repositório
-     * @param index
+     * @param index posiçao
      * @return True ou False
      */
     public boolean remover(int index){
@@ -86,7 +85,7 @@ public class Estoque implements CRUD<Calcado> {
 
     /**
      * retorna o tamanho do repositório
-     * @return
+     * @return tamaho da lista
      */
     public int tamanho(){
         return this.calcados.size();
@@ -95,7 +94,7 @@ public class Estoque implements CRUD<Calcado> {
     /**
      * Recupera o Calçado selecionado
      * @param index
-     * @return
+     * @return calçados
      */
     public Calcado obter(int index){
         return this.calcados.get(index);

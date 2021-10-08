@@ -76,14 +76,14 @@ public class RepositorioDeVendedores implements CRUD<Vendedor>{
     /**
      * Recupera um vendedor pelo index
      * @param index
-     * @return
+     * @return cendedor
      */
       public Vendedor obter(int index){
         return this.vendedores.get(index);
     }
     /**
      * retorna a o tamanho do arraylist
-     * @return
+     * @return vendedor
      */
     public int tamanho(){
         return this.vendedores.size();

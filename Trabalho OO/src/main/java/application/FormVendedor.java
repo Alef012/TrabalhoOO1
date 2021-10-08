@@ -37,7 +37,7 @@ public class FormVendedor extends javax.swing.JFrame {
     /**
      * Retorna a lista de vendedores
      *
-     * @return
+     * @return vendedores
      */
     public ArrayList<Vendedor> devolverVendedor() {
         return this.vendedores.listar();

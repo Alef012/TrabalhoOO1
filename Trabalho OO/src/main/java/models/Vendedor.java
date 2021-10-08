@@ -31,13 +31,13 @@ public class Vendedor extends Pessoa{
     }
 
     /**
-     * Construtor sobrecarregado da classe <b>Vendedor</b> <br> <br
-     * @param numeroDeVendas
-     * @param codigoVendedor
-     * @param nome
-     * @param cpf
-     * @param rg
-     * @param dataNasc
+     * Construtor sobrecarregado da classe <b>Vendedor</b> 
+     * @param numeroDeVendas numero de vendas do vendedor   
+     * @param codigoVendedor codigo do vendedor
+     * @param nome nome do vendedor
+     * @param cpf cpf do vendedor
+     * @param rg rg do vendedor
+     * @param dataNasc data de nascimento do vendedor
      */
     public Vendedor(int numeroDeVendas, String codigoVendedor, String nome, String cpf, String rg, String dataNasc) {
         super(nome, cpf, rg, dataNasc);
@@ -73,7 +73,7 @@ public class Vendedor extends Pessoa{
 
     /**
      * hashCode da classe Vendedor
-     * @return
+     * @return hash
      */
     @Override
     public int hashCode() {
@@ -86,7 +86,7 @@ public class Vendedor extends Pessoa{
     /**
      * Método equals da classe Vendedor
      * @param obj
-     * @return
+     * @return True or False
      */
     @Override
     public boolean equals(Object obj) {
@@ -112,7 +112,7 @@ public class Vendedor extends Pessoa{
     /**
      *
      * toString da classe Vendedor
-     * @return
+     * @return String
      */
 
     @Override
@@ -122,8 +122,7 @@ public class Vendedor extends Pessoa{
                 + "CPF: "+ this.getCpf()+"\n"
                 + "RG: "+ this.getRg()+"\n";
     }
-    
-    
+   
    
     
 }

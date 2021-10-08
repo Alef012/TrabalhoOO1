@@ -5,10 +5,8 @@
  */
 package exceptions;
 
-/**
- *
- * @author USER
- */
+
+ 
 public class EstoqueEsgostadoException extends Exception{
 
     public EstoqueEsgostadoException() {

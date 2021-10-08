@@ -121,8 +121,8 @@ public class Venda {
      * Método equals da classe Venda
      *
      *
-     * @param obj
-     * @return
+     * @param venda
+     * @return True or false
      */
 
     @Override
@@ -176,7 +176,7 @@ public class Venda {
     /**
      *
      * toString da classe Venda
-     * @return
+     * @return String 
      */
 
     @Override

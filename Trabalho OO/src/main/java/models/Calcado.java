@@ -177,10 +177,11 @@ public class Calcado {
                 "\nModelo: " + modelo + 
                 "\nPreço: " + preco + " R$"+
                 "\nCor: " + cor + 
-                "\nCodigoDoProduto: " + codigoDoProduto 
+                "\nCódigo do Produto: " + codigoDoProduto 
                 +"\nQuantidade: " + quantidade
                 ;
     }
+    
     
     
 }
