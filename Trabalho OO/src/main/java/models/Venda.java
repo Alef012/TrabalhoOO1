@@ -11,7 +11,14 @@ import java.util.Objects;
 
 /**
  *
- * @author USER
+ * <p>
+ * Classe <b>Venda </b> </p>
+ * <p>
+ * Define a estrutura de uma Venda na Aplicação</p>
+ *
+ * @author Felipe Alef
+ * @since out 2021
+ * @version 1.0
  */
 public class Venda {
     private LocalDateTime dataHora;
@@ -20,10 +27,22 @@ public class Venda {
     private  Calcado calcado;
     private int quantidadeVendida;
     private double valor;
-
+    /**
+     * Construtor default da classe  <b>Venda</b> <br><br>
+     *
+     * */
     public Venda() {
     }
-
+    /**
+     * Construtor sobrecarregado da classe <b>Venda</b> <br> <br>
+     * <b>uso:</b><br>
+     * @param dataHora data e hora da venda
+     * @param vendedor vendedor que concluiu a venda
+     * @param calcado calçado comprado na venda
+     * @param cliente cliente que fez a compra
+     * @param quantidade quantidade comprada
+     *
+     * */
     public Venda(LocalDateTime dataHora, Vendedor vendedor, Cliente cliente, Calcado calcado, int quantidade) {
         this.dataHora = dataHora;
         this.vendedor = vendedor;
@@ -82,6 +101,11 @@ public class Venda {
         return valor;
     }
 
+    /**
+     * hashCode da classe Venda
+     * @return hash
+     */
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -92,6 +116,14 @@ public class Venda {
         hash = 53 * hash + this.quantidadeVendida;
         return hash;
     }
+
+    /**
+     * Método equals da classe Venda
+     *
+     *
+     * @param obj
+     * @return
+     */
 
     @Override
     public boolean equals(Object obj) {
@@ -122,7 +154,12 @@ public class Venda {
         }
         return true;
     }
-    
+
+    /**
+     * Formata a data e a hora pra uma String mais legível
+     *
+     * @return String data e hora
+     */
     public String getDataeHoraFormatada(){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(this.dataHora.getDayOfMonth()).append("/").
@@ -135,6 +172,12 @@ public class Venda {
         return stringBuilder.toString();
         
     }
+
+    /**
+     *
+     * toString da classe Venda
+     * @return
+     */
 
     @Override
     public String toString() {

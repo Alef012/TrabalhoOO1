@@ -10,22 +10,46 @@ import java.util.Objects;
 
 /**
  *
- * @author USER
+ * <p>
+ * Classe <b>Vendedor </b> </p>
+ * <p>
+ * Define a estrutura de um Vendedor na Aplicação</p>
+ *
+ * @author Felipe Alef
+ * @since out 2021
+ * @version 1.0
  */
 public class Vendedor extends Pessoa{
     
     private int numeroDeVendas;
     private String codigoVendedor;
-
+    /**
+     * Construtor default da classe  <b>Vendedor</b> <br><br>
+     *
+     * */
     public Vendedor() {
     }
 
+    /**
+     * Construtor sobrecarregado da classe <b>Vendedor</b> <br> <br
+     * @param numeroDeVendas
+     * @param codigoVendedor
+     * @param nome
+     * @param cpf
+     * @param rg
+     * @param dataNasc
+     */
     public Vendedor(int numeroDeVendas, String codigoVendedor, String nome, String cpf, String rg, String dataNasc) {
         super(nome, cpf, rg, dataNasc);
         this.numeroDeVendas = numeroDeVendas;
         this.codigoVendedor = codigoVendedor;
     }
 
+    /**
+     * Construutor sobrecarregado da classe <b>Vendedor</b>
+     * @param numeroDeVendas
+     * @param codigoVendedor
+     */
     public Vendedor(int numeroDeVendas, String codigoVendedor) {
         this.numeroDeVendas = numeroDeVendas;
         this.codigoVendedor = codigoVendedor;
@@ -47,6 +71,10 @@ public class Vendedor extends Pessoa{
         this.codigoVendedor = codigoVendedor;
     }
 
+    /**
+     * hashCode da classe Vendedor
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 3;
@@ -55,6 +83,11 @@ public class Vendedor extends Pessoa{
         return hash;
     }
 
+    /**
+     * Método equals da classe Vendedor
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -75,6 +108,12 @@ public class Vendedor extends Pessoa{
         }
         return true;
     }
+
+    /**
+     *
+     * toString da classe Vendedor
+     * @return
+     */
 
     @Override
     public String toString() {

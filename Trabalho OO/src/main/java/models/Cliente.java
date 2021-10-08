@@ -9,11 +9,28 @@ import java.time.LocalDate;
 
 /**
  *
- * @author USER
+ * <p>
+ * Classe <b>Cliente </b> </p>
+ * <p>
+ * Define a estrutura de um Cliente na Aplicação</p>
+ *
+ * @author Felipe Alef
+ * @since out 2021
+ * @version 1.0
  */
+
 public class Cliente extends Pessoa {
     
     private int numeroDeCompras;
+
+    /**
+     * Construtor sobrecarregado da classe <b>Pessoa</b> <br> <br>
+     * @param numeroDeCompras faz referência ao numrro de compras do Cliente
+     * @param nome faz referência ao nome da pessoa.
+     * @param cpf faz referência ao cpf da pessoa.
+     * @param rg faz referência ao rg da pessoa.
+     * @param dataNasc faz referência a data de nascimento da pessoa
+     */
 
     public Cliente(int numeroDeCompras, String nome, String cpf, String rg, String dataNasc) {
         super(nome, cpf, rg, dataNasc);
@@ -23,11 +40,14 @@ public class Cliente extends Pessoa {
     public Cliente(int numeroDeCompras) {
         this.numeroDeCompras = numeroDeCompras;
     }
+    /**
+     * Construtor default da classe  <b>Cliente</b> <br><br>
+     *
+     * */
 
     public Cliente() {
     }
 
-   
     public int getNumeroDeCompras() {
         return numeroDeCompras;
     }
@@ -35,14 +55,20 @@ public class Cliente extends Pessoa {
     public void setNumeroDeCompras(int numeroDeCompras) {
         this.numeroDeCompras = numeroDeCompras;
     }
-
+    /**
+     * HashCode da classe Cliente
+     *
+     */
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 47 * hash + this.numeroDeCompras;
         return hash;
     }
-
+    /**
+     * Método equals da classe Cliente.
+     * @return boolean
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -60,7 +86,10 @@ public class Cliente extends Pessoa {
         }
         return true;
     }
-
+    /**
+     * toString da classe Cliente.
+     * @return String
+     */
     @Override
     public String toString() {
         return "Cliente\n"

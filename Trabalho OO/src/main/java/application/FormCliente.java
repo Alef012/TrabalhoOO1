@@ -8,10 +8,23 @@ import models.Cliente;
 import models.Pessoa;
 import repositorios.RepositorioDeClientes;
 
-
+/**
+ * <p>
+ * <b>FormCliente</b> </p>
+ * <p>
+ * Tela de cadastro de Cliente</p>
+ *
+ * @author Felipe Alef
+ * @since out 2021
+ * @version 1.0
+ */
 public class FormCliente extends javax.swing.JFrame {
     private static RepositorioDeClientes clientes;
     private static int indice;
+
+    /**
+     * Construtor da Classe
+     */
     public FormCliente() {
         clientes = new RepositorioDeClientes();
         initComponents();
@@ -22,6 +35,10 @@ public class FormCliente extends javax.swing.JFrame {
     public ArrayList<Cliente> devolverClientes(){
         return clientes.listar();
     }
+
+    /**
+     * Funcção que deixa o formulário de cadastro invisível
+     */
     public void desabilitarFormulario(){
         this.jTextFieldNomeCliente.setVisible(false);
         this.jTextFieldCPFCliente.setVisible(false);
@@ -35,7 +52,9 @@ public class FormCliente extends javax.swing.JFrame {
         this.jLabelNomeCliente.setVisible(false);
         this.jLabelRGCliente.setVisible(false);
     }
-    
+    /**
+     * Funcção que deixa o formulário de cadastro visível
+     */
     public void habilitarFormulario(){
         this.jTextFieldNomeCliente.setVisible(true);
         this.jTextFieldCPFCliente.setVisible(true);
@@ -49,24 +68,41 @@ public class FormCliente extends javax.swing.JFrame {
         this.jLabelNomeCliente.setVisible(true);
         this.jLabelRGCliente.setVisible(true);
     }
+    /**
+     * Função para ser colocada no botão novo, habilita o formulário de cadastro de clientes
+     */
     private void novo(){
          this.habilitarFormulario();
     }
+    /**
+     * Função que limpa os campos do jtext
+     * deixando uma String vazia neles
+     */
      public void limparCampos(){
         jTextFieldCPFCliente.setText("");
         jTextFieldDataNascCliente.setText("");
         jTextFieldNomeCliente.setText("");
         jTextFieldRGCliente.setText("");
     }
+    /**
+     * Função que fecha a tela de Clientes
+     */
     private void sair(){
         this.desabilitarFormulario();
         this.setVisible(false);
     }
-    
+
+    /**
+     * Cancela o cadastro de um novo cliente
+     * limpa os campos e desabilita os formulários
+     */
     private void cancelar(){
         this.limparCampos();
         this.desabilitarFormulario();
     }
+    /**
+     * Salva os termos digitados no Jtext em um objeto Cliente e adiciona no repositório
+     */
      private void salvar(){
         Cliente cliente = new Cliente();
         cliente.setCpf(jTextFieldCPFCliente.getText());
@@ -78,7 +114,9 @@ public class FormCliente extends javax.swing.JFrame {
         this.CarregaTabela();
         this.limparCampos();
     }
-     
+    /**
+     * Função que carrega a tabela com os clientes cadastrados
+     */
      public void CarregaTabela() {
 
         DefaultTableModel modelo = new DefaultTableModel(new Object[]{"Nome", "CPF", "RG", "DataNasc"}, 0);
@@ -460,7 +498,10 @@ public class FormCliente extends javax.swing.JFrame {
     private void jButtonLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparCamposActionPerformed
         this.limparCampos();
     }//GEN-LAST:event_jButtonLimparCamposActionPerformed
-
+    /**
+     * Função que coloca no indice o valor da posição do cliente clicado na tabela
+     * @param evt
+     */
     private void jTableClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableClientesMouseClicked
         //this.habilitarFormulario();
         this.indice = jTableClientes.getSelectedRow();
@@ -476,6 +517,9 @@ public class FormCliente extends javax.swing.JFrame {
         this.limparCampos();
         this.desabilitarFormulario();
     }//GEN-LAST:event_jButtonExcluirClienteActionPerformed
+    /**
+     * utiliza o index para selecionar qual cliente excluir e remove ele do arraylist
+     */
     public void excluir(){
          this.indice = jTableClientes.getSelectedRow();
         if(indice>=0 && indice<clientes.tamanho()){
@@ -485,6 +529,11 @@ public class FormCliente extends javax.swing.JFrame {
         
         
     }
+    /**
+     * permite editar um cliente já cadastrado
+     * utiliza o index, que é a posição do cliente no arraylist que é usado na tabela e da set dos elementos nos jtext
+     * por ultimo exclui o elemento antigo, assim podendo mudar os elementos e salva-lo novamente
+     */
      private void editar(){
       this.habilitarFormulario();
       if (indice>=0 && indice<clientes.tamanho())
@@ -500,12 +549,12 @@ public class FormCliente extends javax.swing.JFrame {
     private void jButtonEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarClienteActionPerformed
         this.editar();
     }//GEN-LAST:event_jButtonEditarClienteActionPerformed
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -532,11 +581,12 @@ public class FormCliente extends javax.swing.JFrame {
             }
         });
     }
-    
-  
-    
+
+    /**
+     * Cadastra alguns objetos para facilitar a correção
+     */
     private void cadastrar(){
-        
+
         Cliente a = new Cliente();
         a.setNome("Freddie Mercury");
         a.setCpf("1");
@@ -555,7 +605,7 @@ public class FormCliente extends javax.swing.JFrame {
         c.setRg("3");
         c.setDataNasc("18/06/1942");
         clientes.cadastrar(c);
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

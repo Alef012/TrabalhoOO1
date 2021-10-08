@@ -10,13 +10,28 @@ import java.util.Objects;
 
 /**
  *
- * @author USER
+ * <p>
+ * Classe abstrata<b>Pessoa </b> </p>
+ * <p>
+ * Define a estrutura de uma pessoa na Aplicação</p>
+ *
+ * @author Felipe Alef
+ * @since out 2021
+ * @version 1.0
  */
 public abstract class Pessoa {
     private String nome;
     private String cpf;
     private String rg;
     private String dataNasc;
+    /**
+     * Construtor sobrecarregado da classe <b>Pessoa</b> <br> <br>
+     *
+     * @param nome faz referência ao nome da pessoa.
+     * @param cpf faz referência ao cpf da pessoa.
+     * @param rg faz referência ao rg da pessoa.
+     * @param dataNasc faz referência a data de nascimento da pessoa
+     */
 
     public Pessoa(String nome, String cpf, String rg, String dataNasc) {
         this.nome = nome;
@@ -24,9 +39,15 @@ public abstract class Pessoa {
         this.rg = rg;
         this.dataNasc = dataNasc;
     }
+    /**
 
+     * Construtor default da classe  <b>Pessoa</b> <br><br>
+     * <b> uso:</b> <br>
+     * Acesso acesso = new Acesso();
+     */
     public Pessoa() {
     }
+
 
     public String getNome() {
         return nome;
@@ -60,12 +81,20 @@ public abstract class Pessoa {
         this.dataNasc = dataNasc;
     }
 
+    /**
+     * HashCode da classe Pessoa
+     *
+     */
     @Override
     public int hashCode() {
         int hash = 3;
         return hash;
     }
 
+    /**
+     * Método <b>equals</b> da classe Pessoa
+     *
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -93,6 +122,10 @@ public abstract class Pessoa {
         return true;
     }
 
+    /**
+     * toString da classe Pessoa
+     *
+     */
     @Override
     public String toString() {
         return "Pessoa{" + "nome=" + nome + ", cpf=" + cpf + ", rg=" + rg + ", dataNasc=" + dataNasc + '}';

@@ -7,10 +7,24 @@ import javax.swing.table.DefaultTableModel;
 import models.Calcado;
 import repositorios.Estoque;
 
-
+/**
+ *
+ * <p>
+ * <b>FormCalcado</b> </p>
+ * <p>
+ * Tela de cadastro de calçados</p>
+ *
+ * @author Felipe Alef
+ * @since out 2021
+ * @version 1.0
+ */
 public class FormCalcado extends javax.swing.JFrame {
     private static Estoque calcados;
     private static int indice;
+
+    /**
+     * construtor da Classe
+     */
     public FormCalcado() {
         calcados = new Estoque();
         initComponents();
@@ -412,6 +426,12 @@ public class FormCalcado extends javax.swing.JFrame {
     private void jButtonEditarCalcadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarCalcadoActionPerformed
        this.editar();
     }//GEN-LAST:event_jButtonEditarCalcadoActionPerformed
+
+    /**
+     * permite editar um calçado já cadastrado
+     * utiliza o index, que é a posição do calçado no arraylist que é usado na tabela e da set dos elementos nos jtext
+     * por ultimo exclui o elemento antigo, assim podendo mudar os elementos e salva-lo novamente
+     */
     private void editar(){
       this.habilitarFormulario();
       if (indice>=0 && indice<calcados.tamanho())
@@ -428,12 +448,17 @@ public class FormCalcado extends javax.swing.JFrame {
     }
       this.excluir();  
     }
+
+
     private void jButtonExcluirCalcadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirCalcadoActionPerformed
      this.excluir();
      this.limparCampos();
      this.desabilitarFormulario();
     }//GEN-LAST:event_jButtonExcluirCalcadoActionPerformed
-   
+
+    /**
+     * utiliza o index para selecionar qual calçado excluir e remove ele do arraylist
+     */
     public void excluir(){
          this.indice = jTableCalcados.getSelectedRow();
         if(indice>=0 && indice<calcados.tamanho()){
@@ -443,6 +468,10 @@ public class FormCalcado extends javax.swing.JFrame {
         
         
     }
+
+    /**
+     * Função que carrega a tabela com os calçados cadastrados
+     */
     public void CarregaTabela() {
 
         DefaultTableModel modelo = new DefaultTableModel(new Object[]{"Categoria", "Tamanho", "Modelo", "Peço", "Cor", "Código","Quantidade"}, 0);
@@ -485,7 +514,10 @@ public class FormCalcado extends javax.swing.JFrame {
     jTableCalcados.setModel (modelo);
 
 }
-    
+
+    /**
+     * Funcção que deixa o formulário de cadastro invisível
+     */
     public void desabilitarFormulario(){
         this.jTextFieldCategoriaCalcado.setVisible(false);
         this.jTextFieldModeloCalcado.setVisible(false);
@@ -505,7 +537,9 @@ public class FormCalcado extends javax.swing.JFrame {
         this.jLabelTamanhoCalcado.setVisible(false);
         this.jLabelQuantidadeCalcado.setVisible(false);
     }
-    
+    /**
+     * Funcção que deixa o formulário de cadastro visível
+     */
     public void habilitarFormulario(){
         this.jTextFieldCategoriaCalcado.setVisible(true);
         this.jTextFieldModeloCalcado.setVisible(true);
@@ -529,9 +563,18 @@ public class FormCalcado extends javax.swing.JFrame {
     private void jButtonNovoCalcadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoCalcadoActionPerformed
          this.novo();
     }//GEN-LAST:event_jButtonNovoCalcadoActionPerformed
+
+    /**
+     * Função para ser colocada no botão novo, habilita o formulário de cadastro de calçados
+     */
     private void novo(){
          this.habilitarFormulario();
     }
+
+    /**
+     * Função que limpa os campos do jtext
+     * deixando uma String vazia neles
+     */
     public void limparCampos(){
         jTextFieldCategoriaCalcado.setText("");
         jTextFieldCodigoDoProdutoCalcado.setText("");
@@ -552,6 +595,10 @@ public class FormCalcado extends javax.swing.JFrame {
     private void jButtonSairCalcadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairCalcadoActionPerformed
         this.sair();
     }//GEN-LAST:event_jButtonSairCalcadoActionPerformed
+
+    /**
+     * Função que fecha a tela de calçados
+     */
     private void sair(){
         this.desabilitarFormulario();
         this.setVisible(false);
@@ -559,6 +606,11 @@ public class FormCalcado extends javax.swing.JFrame {
     private void jButtonCancelarCalcadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarCalcadoActionPerformed
         this.cancelar();
     }//GEN-LAST:event_jButtonCancelarCalcadoActionPerformed
+
+    /**
+     * Cancela o cadastro de um novo calçado
+     * limpa os campos e desabilita os formulários
+     */
     private void cancelar(){
         this.limparCampos();
         this.desabilitarFormulario();
@@ -570,8 +622,12 @@ public class FormCalcado extends javax.swing.JFrame {
         catch(NumberFormatException numberFormatException){
              JOptionPane.showMessageDialog(null,"Input com formato inválido","ALEF SHOES", JOptionPane.WARNING_MESSAGE);
         }
-       
+
     }//GEN-LAST:event_jButtonSalvarCalcadoActionPerformed
+
+    /**
+     * Salva os termos digitados no Jtext em um objeto calçado e adiciona no repositório
+     */
     private void salvar(){
         Calcado calcado = new Calcado();
         calcado.setCategoria(jTextFieldCategoriaCalcado.getText());
@@ -598,19 +654,30 @@ public class FormCalcado extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTextFieldCategoriaCalcadoActionPerformed
 
+    /**
+     * Função que coloca no indice o valor da posição do calçado clicado na tabela
+     * @param evt
+     */
     private void jTableCalcadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCalcadosMouseClicked
         //this.habilitarFormulario();
         this.indice = jTableCalcados.getSelectedRow();
         
     }//GEN-LAST:event_jTableCalcadosMouseClicked
 
+    /**
+     * atualiza a tabela
+     *
+     */
     private void refresh(){
         this.CarregaTabela();
     }
     private void jButtonRefreshCalcadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshCalcadoActionPerformed
       this.refresh();
     }//GEN-LAST:event_jButtonRefreshCalcadoActionPerformed
-    
+
+    /**
+     * Cadastra alguns objetos paraa facilitar a correção
+     */
     private void cadastrar(){
         Calcado a = new Calcado();
         a.setCategoria("esporte");

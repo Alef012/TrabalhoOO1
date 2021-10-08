@@ -12,7 +12,13 @@ import models.*;
 
 /**
  *
- * @author USER
+ * <p>
+ * <b>Repositório de Vendas</b> </p>
+ * <p></p>
+ *
+ * @author Felipe Alef
+ * @since out 2021
+ * @version 1.0
  */
 public class RegistroDeVendas implements CRUD<Venda>{
     
@@ -21,6 +27,11 @@ public class RegistroDeVendas implements CRUD<Venda>{
     private ArrayList<Vendedor> vendedores = new ArrayList<Vendedor>();
     private ArrayList<Calcado> calcados = new ArrayList<Calcado>();
 
+    /**
+     * Adiciona uma nova venda na lista
+     * @param venda
+     * @return True
+     */
     @Override
     public boolean cadastrar(Venda venda) {
         vendas.add(venda);
@@ -32,30 +43,57 @@ public class RegistroDeVendas implements CRUD<Venda>{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Remove uma venda do repositório
+     * @param venda
+     * @return True
+     */
+
     @Override
     public boolean remover(Venda venda) {
         vendas.remove(venda);
         return true;
     }
+
+    /**
+     * Remove uma venda do repositório
+     * @param indice
+     * @return True
+     */
     
      public boolean remover(int indice) {
         vendas.remove(indice);
         return true;
     }
-    
+
+    /**
+     * lista as Vendas registradas
+     * @return
+     */
 
     @Override
     public ArrayList listar() {
         return vendas; 
     }
-    
+
+    /**
+     * Retorna o tamanho do arraylist de vendas
+     * @return
+     */
     public int tamanho(){
         return vendas.size();
     }
+
+    /**
+     * retorna a Venda selecionada
+     * @param i
+     * @return
+     */
     
     public Venda obter(int i){
         return vendas.get(i);
     }
+
 
     public ArrayList<Venda> getVendas() {
         return vendas;
@@ -88,7 +126,12 @@ public class RegistroDeVendas implements CRUD<Venda>{
     public void setCalcados(ArrayList<Calcado> calcados) {
         this.calcados = calcados;
     }
-    
+
+    /**
+     * Retorna nome do Cliente pelo cpf
+     * @param cpf
+     * @return
+     */
      public String retornaNomeDoClientePeloCpf(String cpf){
       for(Cliente cliente : clientes){
           if(cliente.getCpf().equals(cpf)){
@@ -97,7 +140,12 @@ public class RegistroDeVendas implements CRUD<Venda>{
       }
       
       return null;
-    }  
+    }
+    /**
+     * Retorna nome do Vendedor pelo cpf
+     * @param cpf
+     * @return
+     */
      
       public String retornaNomeDoVendendorPeloCpf(String cpf){
       for(Vendedor vendedor : vendedores){
@@ -107,8 +155,13 @@ public class RegistroDeVendas implements CRUD<Venda>{
       }
       
       return null;
-    }  
-     
+    }
+
+    /**
+     * Retorna o modelo do calçado pelo código
+     * @param codigo
+     * @return
+     */
      public String retornaNomeDoCalcadoPeloCodigo(String codigo){
       for(Calcado calcado : calcados){
           if(calcado.getCodigoDoProduto().equals(codigo)){
@@ -117,8 +170,13 @@ public class RegistroDeVendas implements CRUD<Venda>{
       }
       
       return null;
-    }  
-     
+    }
+
+    /**
+     * retorna a posição do vendedor no repositório pelo cpf
+      * @param cpf
+     * @return
+     */
      
     public Integer posicaoVendedor(String cpf){
          for(Vendedor vendedor : vendedores){
@@ -128,7 +186,12 @@ public class RegistroDeVendas implements CRUD<Venda>{
       }
         return null;
     }
-    
+
+    /**
+     * Retorna a posição do cliente pelo cpf
+     * @param cpf
+     * @return
+     */
     
     public Integer posicaoCliente(String cpf){
          for(Cliente cliente : clientes){
@@ -138,6 +201,12 @@ public class RegistroDeVendas implements CRUD<Venda>{
       }
         return null;
     }
+
+    /**
+     * Retorna a posição do calçado pelo codigo
+     * @param codigo
+     * @return
+     */
     
     public Integer posicaoCalcado(String codigo){
          for(Calcado calcado : calcados){
@@ -149,19 +218,41 @@ public class RegistroDeVendas implements CRUD<Venda>{
       return null;
         
     }
+
+    /**
+     * recupera o vendedor pelo posição
+     * @param indice
+     * @return vendedor
+     */
     
     public Vendedor retornaVendedor(int indice){
         return this.vendedores.get(indice);
     }
+
+    /**
+     * recupera a o calçado pelo indice
+     * @param indice
+     * @return calçado
+     */
     
     public Calcado retornaCalcado(int indice){
         return this.calcados.get(indice);
     }
+
+    /**
+     * retorna cliente pelo indice
+     * @param indice
+     * @return cliente
+     */
     
     public Cliente retornaCliente(int indice){
         return this.clientes.get(indice);
     }
 
+    /**
+     * toString da classe
+     * @return
+     */
     @Override
     public String toString() {
         return "RegistroDeVendas{" + "vendas=" + vendas + ", clientes=" + clientes + ", vendedores=" + vendedores + ", calcados=" + calcados + '}';

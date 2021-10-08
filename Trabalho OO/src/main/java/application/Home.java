@@ -15,7 +15,14 @@ import repositorios.RegistroDeVendas;
 
 /**
  *
- * @author USER
+ * <p>
+ * <b>Home </b> </p>
+ * <p>
+ * Tela principal de Menu</p>
+ *
+ * @author Felipe Alef
+ * @since out 2021
+ * @version 1.0
  */
 public class Home extends javax.swing.JFrame {
 private static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
@@ -34,8 +41,10 @@ private static RegistroDeVendas registroVendas = new RegistroDeVendas();
   private static Buscas busca = new Buscas();
  
   private static FormVenda formVenda = new FormVenda();
-  
-  
+
+    /**
+     * código gerado pelo java swing para a interface
+     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -276,17 +285,31 @@ private static RegistroDeVendas registroVendas = new RegistroDeVendas();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Botão que direciona para a tela de cadastrar Calçados
+     * @param evt
+     */
     private void jButtonCalcadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalcadosActionPerformed
         //formCalcado.limpar();
         formCalcado.setLocationRelativeTo(this);
         formCalcado.setVisible(true);
     }//GEN-LAST:event_jButtonCalcadosActionPerformed
 
+    /**
+     * Botão que direciona para a tela de cadastrar Clientes
+     * @param evt
+     */
+
     private void jButtonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClientesActionPerformed
         formCliente.setLocationRelativeTo(this);
         formCliente.setVisible(true);
 
     }//GEN-LAST:event_jButtonClientesActionPerformed
+
+    /**
+     * Botão que direciona para a tela de Relatório
+     * @param evt
+     */
 
     private void jButtonGerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGerarRelatorioActionPerformed
         if(formVenda.devolveRegistroDeVendas()!=null){
@@ -296,11 +319,19 @@ private static RegistroDeVendas registroVendas = new RegistroDeVendas();
        
     }//GEN-LAST:event_jButtonGerarRelatorioActionPerformed
 
+    /**
+     * Botão que abre a tela de cadastro de vendedores
+     * @param evt
+     */
     private void jButtonVendedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVendedoresActionPerformed
         formVendedor.setLocationRelativeTo(this);
         formVendedor.setVisible(true);
     }//GEN-LAST:event_jButtonVendedoresActionPerformed
 
+    /**
+     * Botão que abre a tela de buscas
+     * @param evt
+     */
     private void buscasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscasActionPerformed
      if(formVenda.devolveRegistroDeVendas()!=null){
              busca.setRegistroDeVendas(formVenda.devolveRegistroDeVendas());
@@ -308,6 +339,11 @@ private static RegistroDeVendas registroVendas = new RegistroDeVendas();
         busca.setVisible(true);
         
     }//GEN-LAST:event_buscasActionPerformed
+
+    /**
+     * Botão que abre a tela para registro de vendas
+     * @param evt
+     */
 
     private void jButtonRegistrarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarVendaActionPerformed
        

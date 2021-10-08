@@ -9,8 +9,16 @@ import java.util.Objects;
 
 /**
  *
- * @author USER
+ * <p>
+ * Classe <b>Calcado </b> </p>
+ * <p>
+ * Define a estrutura de um Calçado na Aplicação</p>
+ *
+ * @author Felipe Alef
+ * @since out 2021
+ * @version 1.0
  */
+
 public class Calcado {
     private String categoria;
     private int tamanho;
@@ -20,9 +28,27 @@ public class Calcado {
     private String codigoDoProduto;
     private int quantidade;
 
+    /**
+     * Construtor default da classe  <b>Calcado</b> <br><br>
+     *
+     * */
+
     public Calcado() {
     
     }
+        /**
+         * Construtor sobrecarregado da classe <b>Calcado</b> <br> <br>
+         * <b>uso:</b><br>
+         * Calcado calcado = new Calcado ("categoria","tamanho", modelo","preco", "cor", codigoDoProduto);<br> <br>
+         * <b>onde:</b> <br>
+         *
+         * @param categoria faz referência a categoria do calçado.
+         * @param tamanho faz referência ao tamanho do calçado.
+         * @param modelo faz referênica ao modelo do calçado.
+         * @param preco faz referência ao preço do calçado.
+         * @param cor faz referência a cor do calçado.
+         * @param codigoDoProduto faz referência ao codigo do calçado;
+         */
 
     public Calcado(String categoria, int tamanho, String modelo, double preco, String cor, String codigoDoProduto) {
         this.categoria = categoria;
@@ -34,9 +60,11 @@ public class Calcado {
         
     }
 
-    public String getCategoria() {
+        public String getCategoria() {
         return categoria;
     }
+
+
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
@@ -89,14 +117,20 @@ public class Calcado {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
-
+    /**
+     * HashCode da classe Calcado
+     *
+     */
     
     @Override
     public int hashCode() {
         int hash = 7;
         return hash;
     }
-
+        /**
+         * Método equals da classe Calcado.
+         *
+         */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -129,6 +163,11 @@ public class Calcado {
         }
         return true;
     }
+
+        /**
+         * toString da classe Calcado
+         * @return String
+         */
 
     @Override
     public String toString() {

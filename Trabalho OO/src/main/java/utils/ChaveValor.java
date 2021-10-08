@@ -6,8 +6,10 @@
 package utils;
 
 /**
- *
- * @author USER
+ * Objeto chave valor para auxiliar nos cálculos dos relatórios, como calçado mais vendido, vendedor que mais vendeu e cliente que mais comprou
+ * @author Felipe Alef
+ * @since outubro 2021
+ * @version 1.0
  */
 public class ChaveValor {
     
@@ -30,6 +32,11 @@ public class ChaveValor {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
+    /**
+     * toString do chaveValor
+     * @return String
+     */
 
     @Override
     public String toString() {

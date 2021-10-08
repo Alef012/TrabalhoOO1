@@ -12,7 +12,14 @@ import repositorios.RegistroDeVendas;
 
 /**
  *
- * @author USER
+ * <p>
+ * <b>Buscas </b> </p>
+ * <p>
+ * Tela de Buscas</p>
+ *
+ * @author Felipe Alef
+ * @since out 2021
+ * @version 1.0
  */
 public class Buscas extends javax.swing.JFrame {
 
@@ -421,42 +428,78 @@ private RegistroDeVendas registroDeVendas = new RegistroDeVendas();
         
     }//GEN-LAST:event_jTextFieldClienteNomeBuscasActionPerformed
 
+    /**
+     * Botão executa a busca do Calçado por código
+     * @param evt
+     */
     private void jButtonCodigoCalcadoBuscasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCodigoCalcadoBuscasActionPerformed
         this.consultaCalcadoPorCodigo();
     }//GEN-LAST:event_jButtonCodigoCalcadoBuscasActionPerformed
 
+    /**
+     * Botão executa a busca do caçado por modelo
+     * @param evt
+     */
     private void jButtonModeloCalcadoBuscasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModeloCalcadoBuscasActionPerformed
         this.consultaCalcadoPorModelo();
     }//GEN-LAST:event_jButtonModeloCalcadoBuscasActionPerformed
 
+    /**
+     * Botão executa a busca pelo cliente por cpf
+     * @param evt
+     */
     private void jButtonConsultaClientePorCpfBuscasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultaClientePorCpfBuscasActionPerformed
         this.consultaClientePorCpf();
     }//GEN-LAST:event_jButtonConsultaClientePorCpfBuscasActionPerformed
+
 
     private void jTextFieldVendedorNomeBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldVendedorNomeBuscaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldVendedorNomeBuscaActionPerformed
 
+    /**
+     * Botão execulta a busca pelos clientes por nome
+     * @param evt
+     */
     private void jButtonConsultaClientePorNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultaClientePorNomeActionPerformed
       
         this.consultaClientePorNome();
     }//GEN-LAST:event_jButtonConsultaClientePorNomeActionPerformed
 
+    /**
+     * Botão que fecha a tela de buscas sem parar de rodar o programa
+     * @param evt
+     */
     private void jButtonSairCalcadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairCalcadoActionPerformed
         this.sair();
     }//GEN-LAST:event_jButtonSairCalcadoActionPerformed
 
+    /**
+     * Botão que executa a busca pelo vendedor por nome
+     * @param evt
+     */
     private void jButtonNomeVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNomeVendedorActionPerformed
         this.consultaVendedorPorNome();
     }//GEN-LAST:event_jButtonNomeVendedorActionPerformed
 
+    /**
+     * Botão que executa a busca pelo vendedor por cpf
+     * @param evt
+     */
     private void jButtonCpfVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCpfVendedorActionPerformed
         this.consultaVendedorPorCpf();
     }//GEN-LAST:event_jButtonCpfVendedorActionPerformed
 
+    /**
+     * função que fecha a tela de busca
+     */
     private void sair(){
         this.dispose();
     }
+
+    /**
+     * Fução que procura o Calcado pelo código, comparando o código colocado no jtext com o modelo dos calçados no registro
+     */
      private void consultaCalcadoPorCodigo(){
        jTextAreaCalcados.setText("");
         String output="";
@@ -472,6 +515,10 @@ private RegistroDeVendas registroDeVendas = new RegistroDeVendas();
       this.jTextAreaCalcados.setText(output);
 
     }
+
+    /**
+     * função que consulta o calçado pelo modelo, comparando o modelo colocado no jtext com o modelo dos Calçados no registro
+     */
     private void consultaCalcadoPorModelo(){
        jTextAreaCalcados.setText("");
         String output="";
@@ -487,6 +534,10 @@ private RegistroDeVendas registroDeVendas = new RegistroDeVendas();
       this.jTextAreaCalcados.setText(output);
 
     }
+
+    /**
+     * função que consulta o vendedor por nome comparando o nome colocado no jtext com o nome dos Vendedores no registro
+     */
     
     private void consultaVendedorPorNome(){
        jTextAreaVendedoresBuscas.setText("");
@@ -503,6 +554,10 @@ private RegistroDeVendas registroDeVendas = new RegistroDeVendas();
       this.jTextAreaVendedoresBuscas.setText(output);
 
     }
+
+    /**
+     * função que consulta vendedor por CPF comparando o cpf colocado no jtext com o cpf dos Vendedores no registro
+     */
      private void consultaVendedorPorCpf(){
        jTextAreaVendedoresBuscas.setText("");
         String output="";
@@ -518,6 +573,10 @@ private RegistroDeVendas registroDeVendas = new RegistroDeVendas();
       this.jTextAreaVendedoresBuscas.setText(output);
 
     }
+
+    /**
+     * função que procura o cliente por nome comparando o nome colocado no jtext com o nome dos Clinetes no registro
+     */
     
     private void consultaClientePorNome(){
        jTextAreaClienteBuscas.setText("");
@@ -534,6 +593,10 @@ private RegistroDeVendas registroDeVendas = new RegistroDeVendas();
       this.jTextAreaClienteBuscas.setText(output);
 
     }
+
+    /**
+     * função que procura cliente por CPF comparando o cpf colocado no jtext com o CPF dos Clinetes no registro
+     */
    
     private void consultaClientePorCpf(){
        jTextAreaClienteBuscas.setText("");

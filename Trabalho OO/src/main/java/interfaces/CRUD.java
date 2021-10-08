@@ -9,7 +9,12 @@ import java.util.ArrayList;
 
 /**
  *
- * @author USER
+ * <p>
+ * <b>Interface CRUD</b> </p>
+ *
+ * @author Felipe Alef
+ * @since out 2021
+ * @version 1.0
  */
 public interface CRUD<T> {
     
